@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blockchain Voting System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .candidate {
+      margin: 10px 0;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Blockchain Voting</h2>
+
+    <label for="voterId">Voter ID:</label>
+    <input type="text" id="voterId" placeholder="Enter your Voter ID" />
+
+    <p>Select Candidate:</p>
+    <div class="candidate">
+      <input type="radio" id="candidate1" name="candidate" value="Alice">
+      <label for="candidate1">Alice</label>
+    </div>
+    <div class="candidate">
+      <input type="radio" id="candidate2" name="candidate" value="Bob">
+      <label for="candidate2">Bob</label>
+    </div>
+
+    <button onclick="castVote()">Submit Vote</button>
+
+    <div id="status"></div>
+  </div>
+
+  <script>
+    function castVote() {
+      const voterId = document.getElementById("voterId").value.trim();
+      const selectedCandidate = document.querySelector('input[name="candidate"]:checked');
+
+      if (!voterId || !selectedCandidate) {
+        document.getElementById("status").innerText = "Please enter Voter ID and select a candidate.";
+        document.getElementById("status").style.color = "red";
+        return;
+      }
+
+      const candidate = selectedCandidate.value;
+
+      // Replace this with smart contract call
+      console.log("Casting vote for:", candidate, "by Voter ID:", voterId);
+
+      document.getElementById("status").innerText = Vote cast successfully for ${candidate}!;
+      document.getElementById("status").style.color = "green";
+    }
+  </script>
+</body>
+</html>
